@@ -1,0 +1,72 @@
+vim editor:
+
+Editors:
+$vim (Visuvally Improved)
+$vim <filename> - If the file doesn't exists, it will create and open. Its file is there, i will open the file.
+Esc Mode
+Insert Mode
+
+when open a file by default its in ESC Mode
+Esc mode options:
+press i to go insert mode
+press u in insert mode is undo
+press yy - yank/copy the line
+press p - it will paste and press 10p for paste 10 times
+press dd - to cut/delete whole line
+press gg - want to go top of the file
+shift+g takes us to bottom
+
+shift+: - to go column Mode:
+:/<word-to-find> - It will search for the word from top. search hit bottom, continue at
+:?<word-to-find> - it will search for the word from buttom
+:set nu - Numbers will display/highlight
+:set nonu - numbers dnt dispaly/unhighlight
+:noh - it will unhighlight the previous searched word (no highlight)
+:q - quit the file or come out of the file. not saving
+:q! - quit without saving
+:wq - save the changes and quit
+:s/<word-to-find>/<replace with anotherword> It will only substitute only where the cusrsor placed
+:2ss/<word-to-find>/<replace with anotherword> - it will substite particular line word
+:%s/<word-to-find>/<replace with anotherword>/g - replace entire file
+-------------------------------------------------------------------------
+Linux Administration:
+
+User Managemengt:
+
+$ useradd <user-name> - For creating user
+$ id <username> - Displays the user info - To check whether user created or not
+
+In Linux, when you create user, by default group also will be created with same name.
+1 primary group, atleast one secondary group.
+
+Linux will start creating users from 1000, Below 1000 those are system users..
+/etc/passwd - for users info
+$ getent passwd
+$ passwd <user-name> - For creating password for user
+For User login to system:
+Linux disable password authentication. How to enable password authentication?
+$ vim /etc/ssh/sshd_config
+sshd_config is a crucial file. you should not do mistake here
+should take backup before do changes in sshd_config
+edit the file /etc/ssh/sshd_config
+search for password :?password
+change No to Yes for 'Password Authentication' and save It
+sshd -t -> will check for syntax
+then restart 
+$systemctl restart sshd
+
+$groupadd <group-name> - For Creating Group
+$usermod -g <username> <groupname> - For adding user into Primary Group
+$usermod -aG <Username> <Secondary-Group> - For adding user into secondary Group
+
+Delete user:
+User leaving organization:
+we need to remove user from group then delete user
+$ userdel <user-name> for deleting user
+We can't delete user from Primary group
+First need to change his primary group to his own group
+$ groupdel <group-name> for Deleting group
+We can only delete the group if its has no users.
+first we should remove users from groups then delete.
+Delete user's directory. cd /home/<username>
+$ gpasswd -d <username> <secondarygroup> - to delete user from secondary group
