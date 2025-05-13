@@ -1,0 +1,105 @@
+port numbers:
+ http - 80
+ https - 443
+ SSH - 22
+
+Firewall -> checks inbound and outbound traffic(security group)
+Inbound -> Incoming traffic
+Outbound -> Outgoing traffic
+
+1. Create Keypair
+2. Create Firewall
+3. Import public key to aws account
+4. Create server and attach public key
+5. Attach firewall to server
+
+Git Bash -> Mini Linux in windows. Not completely. It is one of SSH Client
+
+SSH Clients: git bash = putty = super putty = mobaxterm = mac terminal = windows cmd
+
+pwd -> present working directory
+
+user directory:
+c:\Users\user_name\ -> windows format
+/c/Users/user_name/ -> Linux format
+
+Windows -> not case sensitive
+Linux - Case sensitive
+
+Generate key pair:
+$ ssh-keygen -f <file-name>
+
+Firewall nothing but security group in AWS.
+Create security group with allow all traffic inbound and outbound. for practice only
+
+Import public key into aws account:
+
+Create ec2 server with amazon linux and t2.micro. attach ketpair and select security group:
+
+how to connect to server:
+ ssh -i <private-key> ec2-user@<public_ip>
+ 
+Linux OS -> Redhat, Ubuntu, centos. fedora, suse, oracle linux, amazon linux, debian, rockey linux, kali, solaris
+
+Linux is OS or  not? -> Linux is kernel. not OS
+OS -> to interact with hardware.
+Kernal -> heart of OS
+Kernal + UI == OS
+
+Redhat -> Linux kernel + User_interface = Redhat OS
+Debian -> Linux kernel + UI = Debian OS
+
+99.9% same all linux distros/flavours
+
+Redhat -> open source -> only code is free
+Redhat enterprise RHEL -> have support
+
+RHEL = AWS Linux = Centos = Fedora = Rockey Linux = AlmaLinux
+
+Few cmds:
+format: cmd <options> <inputs>
+
+$ uname -> to get to know what is OS
+$ uname -a -> full info
+$ pwd -> present working direcory 
+$ cd .. -> one step back
+$ ls -> list sub-directories
+$ ls -l -> list format
+$ cd <folder_name> -> be in folder
+
+Check the blog: https://medium.com/@pavandivi.kumar47/beginners-guide-to-ec2-linux-ssh-in-aws-with-real-world-analogies-872df691fedd
+--------------------------------------------------------------------------------------------------------------------------------------------
+Linux Architecture:
+
+Kernel – The Brain of the System
+
+-> The Kernel is like the brain of a computer.
+-> It controls and manages the hardware (CPU, memory, storage, etc.).
+-> It acts as a middleman between the operating system and the hardware to ensure everything runs smoothly.
+
+How Do We Talk to the Kernel?
+
+-> We can’t talk to the Kernel directly. Instead, we use the Shell to send instructions.
+-> The Shell is like a translator that helps us communicate with the Kernel.
+
+How Does the User Get the Desired Output?
+
+-> User types a command in the Shell.
+-> Shell translates it into a language the Kernel understands.
+-> Kernel converts it into a language that hardware understands.
+-> Hardware processes the request and gives the result back to the user.
+
+What is Shell?
+
+-> The Shell is simply a place where we type Linux commands.
+-> It reads and processes the commands, then passes them to the Kernel.
+
+In short, User → Shell → Kernel → Hardware → Output is how Linux works!
+
+Shell Working Process:
+-> Whenever we execute a command in terminal(EC2 Instance - Putty or Mobixtem), shell will read the command and will check the syntax.
+-> If syntax/cmd is correct, then shell will convert that command into Kernal understandable format/Language
+-> Kernal will read the instructions given by shell, and then Kernal will convert the command into hardware components understandable format.
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+

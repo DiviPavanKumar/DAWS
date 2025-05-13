@@ -1,0 +1,110 @@
+What is Kubernetes (K8s)?
+	* Kubernetes (shortened as K8s) is an open-source platform used to orchestrate and manage containers.
+	* Developed by Google and later donated to CNCF (Cloud Native Computing Foundation).
+	* It is designed to automate the deployment, scaling, and management of containerized applications across a cluster of nodes.
+	* K8s provides a consistent and reliable way to manage applications, regardless of whether they are running on-premises, in the cloud, or in hybrid environments.
+
+Why Use Kubernetes? (Advantages)
+	* Container Orchestration: Automates container management.
+	* Scalability: Easily scale applications up or down.
+	* Self-Healing: Automatically replaces failed containers.
+	* Load Balancing: Distributes network traffic efficiently.
+
+1. Is Docker mandatory for K8s?
+    No. Kubernetes can use other container runtimes like containerd or CRI-O.
+
+2. How is K8s different from Docker?
+    Docker runs containers. Kubernetes manages and scales containerized applications across clusters.
+
+3. Is K8s open-source or commercial?
+    Open-source, maintained by the Cloud Native Computing Foundation (CNCF).
+
+4. What problems does K8s solve?
+    It automates container deployment, scaling, load balancing, and self-healing.
+
+5. What benefits does K8s bring?
+    High availability, auto-scaling, load balancing, rollouts, and better resource usage.
+
+6. Are there any K8s alternatives?
+    Yes. Examples: Docker Swarm, Nomad, OpenShift (built on K8s), and Rancher.
+
+7. What about Azure K8s (AKS), AWS K8S (EKS), and Google K8s (GKE)?
+    They are managed Kubernetes services by Azure, AWS, and Google, making it easier to run K8s without handling the infrastructure.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+Cluster Concept:
+ * A cluster = a group of servers.
+ 
+Two main types of nodes:
+   - Control Plane (Master Node): Manages the cluster.
+   - Worker Nodes: Run applications (inside Pods).
+	
+- Master Node(Control Plane) Components:
+	* API Server: It is a component of the k8s control plane that exposes the k8s API.
+				  It is the front end for the k8s control plane.
+				  It also handles authentication and authorization
+	* Scheduler: Control plane component that watches for newly created Pods with no assigned node and selects a node for them to run on.
+	* Controller Manager: Control Plane component that runs controller processes.
+	* etcd Database: Consistent and highly-available key value store used as kubernetes' backing store for all cluster data
+
+- Worker Node Components:
+	* Kubelet: - An agent that runs on each node in the cluster. It makes sure that containers are running in a pod.
+			   - The kubelet takes a set of podspecs that are provided through various mechanisms and ensures that the containers described in those 
+			     PodSpecs are running and healty. 
+			   - The kubelet doesn't namage containers which were not created by Kubernetes.
+	* Kube-Proxy: - Kube-proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept.
+				  - Kube-proxy maintains network rules on nodes. These network rules allow network communication to your pods from network sessions 
+					inside or outside of your cluster.
+    * Docker/Container platform: Runs containers.
+
+Workload Components:
+	- pods: pod is a collection of one or more containers
+	- Deployments: collection of pods
+	- services: 
+	- ingress
+	- configmaps
+	- secrets
+	- namespaces
+	- persistent volumes
+	- persistent volume claims
+	- statefulsets and more..
+
+1. What are the master node components in K8S?
+	- API Server
+	- Controller Manager
+	- Scheduler
+	- etcd Database
+2. What are the worker node components in K8S?
+	- Kubelet
+	- Kube-Proxy
+	- Container Platform
+3. What are the different workload components you are familiar with?
+	Give a 5 component names, 
+	- pod
+	- Deployments
+	- services
+	- ingress
+	- Namespaces
+4. what is the functionality of API Server in master node?
+	- It is a component of the k8s control plane that exposes the k8s API.
+	- It is the front end for the k8s control plane.
+	- It also handles authentication and authorization
+5. What is Kubelet do on worker nodes?
+	- An agent that runs on each node in the cluster. It makes sure that containers are running in a pod.
+	- The kubelet takes a set of podspecs that are provided through various mechanisms and ensures that the containers described in those 
+	  PodSpecs are running and healty. 
+	- The kubelet doesn't namage containers which were not created by Kubernetes.
+6. What is etcd database?
+	- Consistent and highly-available key value store used as kubernetes' backing store for all cluster data
+7. Who manages master node in cloud version of K8S?
+	usvally the cloud service provider
+8. Can we have multiple master nodes?
+	yes we can have multiple master nodes for high availability
+	with stacked control plane nodes, where etcd nodes are colocated with control plane nodes.
+	with external etcd nodes, where etcd runs on separate nodes from the control plane.
+9. What is the cluster configuration you have worked on?
+	Single master node and 5 worker nodes
+	
+	
+
+	
