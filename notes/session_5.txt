@@ -1,0 +1,85 @@
+Permissions:
+
+R - Read
+W - Write
+X - Execute
+
+when create user in linux, by default a group also created on the same name of user.
+
+10 characters:
+- | rw- | r-- | r --
+file/directory | User/owner | Group | Others
+
+u - user
+g - Group
+o - others
+
+$chmod u+x <filename> - Provide excute access to user
+$chmod u-x <filename> - remove excute access to user
+$chmod +x <filename> - to give excute access to all user, groups and others
+$chmod -x <filename> - to remove excute access for all users, groups and others
+
+For changing file permissions, u shoul be either owner of the file or root user
+File ownership can only be modified by root user. Cant by owner.
+$ chown <username> <filename>
+
+R - 4
+W - 2
+X - 1
+
+$chmod 700 - all access to user, no access to group, no access to others
+$chmod 750 - all access to users, read/excutre access to group, no access to others
+
+Public key and Private key inside the linux will not have morethan 600. 
+600 means read/write access to user, no access to group and no access to others.
+ 
+Because the key file belongs to only you. No body else can read. other users cant read ur public key. 
+
+ssh Key Authentication to user: 
+user have to create his public and private keys
+Share public Key to Admin
+Create directory .ssh inside the home folder of user
+$chmod 700 .ssh
+Create a file called authorized_keys and paste public key of user
+give read and write access to user
+no access to groups
+no access to others
+Ownership:
+change ownership to user
+chown <user>:<group> .ssh
+-------------------------------------------------------
+Package Management:
+
+Package Manager connects to internet windows website. Downloads them and install them.
+
+Ubuntu - apt-get
+centos - yum/dnf
+aws linux 2 - amzon-linux-extras and yum
+
+Install a package called git
+$sudo amazon-linux-extras install epel -y
+$dnf install git -y
+$dnf remove git -y
+$dnf list all - all packages including installed packages
+$dnf list installed - all installed
+$dnf list available | grep python -> 
+
+Directory -> /etc/yum.repos.d
+$ dnf list installed -> to check packages which already installed
+
+----------------------------------------------------
+
+Service Management:
+
+Take an example Nginx Server
+http server running on port 80
+we should install nginx in Server in root user
+$amazon-linux-extras install ngnix1 -y or $yum install nginx1 -y
+we should start this Service
+$systemctl start nginx
+$systemctl status nginx
+/usr/share/nginx/html - Folder where we keep html, CSS, JS files
+If we restart server, service will not run defauly.
+so we should enable in Background
+$systemctl enable nginx
+$systemctl disable nginx
