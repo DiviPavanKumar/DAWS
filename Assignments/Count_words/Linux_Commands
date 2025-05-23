@@ -1,0 +1,264 @@
+For Creating Public / Private Keys
+$ ssh-keygen -f <FileName>
+Example: ssh-keygen -f devops
+
+For connecting to EC2 / AWS Server from cmd:
+$ ssh -i <Private Key path> servername@publicIP
+Example: ssh -i C:\Users\pavan.d\devops.pem ec2-user@65.0.30.222
+
+$ means normal user
+# meand root user(Admin) 
+$ sudo su - for admin access
+$ pwd - present working directory
+$ uname for what is kernal - Linux
+$ uname -a - for single char
+$ uname --all -- for word 
+$ uname --help -clear documantation about cmds
+
+$ ls for List files and directories
+d - directory
+- - file
+
+CRUD - Create Read Update Delete
+
+$ cd / for base Location(CD means change Directory)
+$ cd for home directory
+$ ls -l (-l for lengthy format)
+$ cd <Folder-name> (inside the folder)
+$ cd.. for come back from folder
+$ ls -lr for list files in reverse alpha order
+$ ls -lt for list files based on time of create
+$ ls -ltr for list files based on time of create in reverse alpha 
+$ ls -la for to view hidden files (.files)
+$ touch <Filename> - for creating  file creating
+$ mkdir <Foldername> - for creating directory/folder
+$ cat > <filename> Enter - then we can enter text inside the file - then ctrl+d
+$ cat <filename> for reading the text inside file
+$ rm <filename> for removes file
+$ rmdir <directory name> for removed directory(It can remove only when dir is empty)
+$ rm -r <directoryname> for remove everything(all files) from directory
+-r means recursive i.e inside as well
+Absolute path - Complete path
+Relative path - u r already in directory. so start CD, no need to give complete path
+$ cat >> <Filename>It always append to old content - > it will remove old contect and saves new content
+
+Copy Command:
+$ cp --help
+& cp <filename which one we want to copy> <where you want to paste>
+$ mv for cut the files/folder
+$ mv <filename which one we want to cut> <where you want to paste>
+$ cp -r <foldername which one want to copy> <folder name where want to paste>
+
+Rename file:
+mv <old filename> <NewFilename>
+
+29th July 2021
+
+$grep - To find the text in file
+$cp /etc/passwd passwd
+$pwd
+$ls -la
+$grep <word-to-find> <FileName>
+Linux is case senstive. 
+$grep -i <word-to-find> <FileName> - For case insenstive
+
+Pipeing: |
+Pipe is output of first cmd becoming input of next cmd
+
+$head - for first 10 lines of the file
+$tail - for last 10 lines of the file
+$head -n 2 <filename> - for first 2 lines
+$tail -n 2 <filename> - for last 2 lines
+
+$cat <filename> | grep -n 2
+
+$wget - webget - to get download app link from web
+$wget <url>
+$curl <url> - its give text of terminal. it wont download
+
+$cut - to cut the string baced on some delimiter
+$echo <string> | cut -d <delimiter ex-/ :> -f 1
+$echo <string> | cut -d <delimiter ex-/ :> -f 2
+
+$awk - 
+$awk -F "/" '{print $1F}'
+$awk -F "/" '{print $NF}'
+Difference between $cut and $awk?
+both we can use for the delimitation purpose. we can choose any delimiter to cut the text/cmd/string/url. 
+But $awk has another usage. i.e column based.
+
+Editors:
+$vim (Visuvally Improved)
+$vim <filename> - If the file doesn't exists, it will create and open. Its file is there, i will open the file.
+Esc Mode
+Insert Mode
+
+when open a file by default its in ESC Mode
+Esc mode options:
+press i to go insert mode
+press u in insert mode is undo
+press yy - yank/copy the line
+press p - it will paste and press 10p for paste 10 times
+press dd - to cut the line
+press gg - want to go top of the file
+shift+g takes us to bottom
+
+shift+: - to go column Mode:
+:/<word-to-find> - It will search for the word from top. search hit bottom, continue at
+:?<word-to-find> - it will search for the word from buttom
+:set nu - Numbers will display/highlight
+:set nonu - numbers dnt dispaly/unhighlight
+:noh - it will unhighlight the previous searched word (no highlight)
+:q - quit the file or come out of the file. not saving
+:q! - quit without saving
+:wq - save the changes and quit
+:s/<word-to-find>/<replace with anotherword> It will only substitute only where the cusrsor placed
+:2ss/<word-to-find>/<replace with anotherword> - it will substite particular line word
+:%s/<word-to-find>/<replace with anotherword>/g - replace entire file
+
+Permissions:
+R
+W
+X - Execute
+when create user in linux, by default a group also created on the same name of user.
+$chmod u+x <filename> - Provide excute access to user
+$chmod u-x <filename> - remove excute access to user
+$chmod +x <filename> - to give excute access to all user, groups and others
+$chmod -x <filename> - to remove excute access for all users, groups and others
+u - user
+g - Group
+o - others
+For changing file permissions, u shoul be either owner of the file or root user
+R - 4
+W - 2
+X - 1
+$chmod 700 - all access to user, no access to group, no access to others
+$chmod 750 - all access to users, read/excutre access to group, no access to others
+
+Public key and Private key inside the linux will not have morethan 600. 
+600 means read/write access to user, no access to group and no access to others. 
+Because the key file belongs to only you. No body elase can read. other isers cant read ur public key. 
+
+User Management:
+$ useradd <user-name> - For creating user
+Linux will start creating users from 1000, Below 1000 those are system users..
+/etc/passwd - for users info
+$ getent passwd
+$ passwd <user-name> - For creating password for user
+For User login to system:
+Linux disable password authentication. How to enable password authentication?
+/etc/ssh/sshd_config
+sshd_config is a crucial file. you should not do mistake here
+should take backup before do changes in sshd_config
+
+edit the file /etc/ssh/sshd_config
+search for password /password
+change No to Yes for authentication and save It
+sshd -t - will check for syntax
+then restart 
+$systemctl restart sshd
+
+$groupadd <group-name> - For Creating Group
+$usermod -g <username> <groupname> - For adding user into Primary Group
+$usermod -aG <Username> <Secondary-Group>
+
+ssh Key Authentication to user: 
+user have to create his public and private keys
+Share public Key to Admin
+Create directory .ssh inside the home folder of user
+$chmod 700 .ssh
+Create a file called authorized_keys and paste public key of user
+
+give read and write access to user
+no access to groups
+no access to others
+
+Ownership:
+change ownership to user
+chown <user>:<group> .ssh
+
+Delete user:
+User leaving organization:
+we need to remove user from group then delete user
+$userdel <user-name> for deleting user
+We can't delete user from Primary group
+First need to change his primary group to his own group
+$groupdel <group-name> for Deleting group
+We can only delete the group if its has no users.
+first we should remove users from groups then delete.
+
+Process Management:
+PID
+PPIAD
+$ps -ef - listdown the Process
+First it will create PID
+1. Forground Process
+2. Background Process $sleep 10 &
+$kill <PID> - Requesting to end task
+$kill -9 <PID> - Forcing to end task
+shouldn't kilss PPID
+
+Package Management:
+Ubuntu - apt-get
+centos - yum
+aws linux 2 - amzon-linux-extras and yum
+Install a package called git
+$sudo amazon-linux-extras install epel -y
+$yum install git -y
+$yum remove git -y
+$yum list all - all packages including installed packages
+$yum list installed
+$yum list available - all installed
+
+Service Management:
+Take an example Nginx Server
+http server running on port 80
+we should install nginx in Server in root user
+$amazon-linux-extras install ngnix1 -y or $yum install nginx1 -y
+we should start this Service
+$systemctl start nginx
+$systemctl status nginx
+/usr/share/nginx/html - Folder where we keep html, CSS, JS files
+If we restart server, service will not run defauly.
+so we should enable in Background
+$systemctl enable nginx
+$systemctl disable nginx
+
+Network Management:
+$netstat - Network statuistics 
+$netstat -lt - only list TCP
+$netstat -ltn - to see only port numbers
+$netstat -ltnp - to see process instancess ID(PID) - We can check respected port is opned or not, what is PID
+$top - to check the CPU and Memory
+$free -m - to check RAM Usage
+$df -hT - Check the Hard disk Memory
+$telnet <IP> <PORT>
+
+$find / -name <"filename"> - To search the file
+
+$tar -x <filename> - for unzip files
+
+$crontab - Linux Crontab is a powerful utility that is used for scheduling and automating Tasksin Unix-Like Operating system. It facilitates the users to run the scripts or Linux cmds at specified times and intervals. It is ideal for repetitive tasks such as system maintenance, backups and updates.
+$ crintab -e Enter
+   * * * * * <cmd>
+   
+$set-hostname <Name>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

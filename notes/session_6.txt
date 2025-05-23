@@ -1,0 +1,47 @@
+Process Management:
+PID
+PPID - Parent process instance ID
+
+$ ps -ef -> listdown the Process
+$ ps -ef | grep <process-name> -> search for specific process
+
+First it will create PID
+1. Foreground Process
+2. Background Process $sleep 10 &
+& -> to take process into background
+$ kill <PID> - Requesting to end task
+$ kill -9 <PID> - Forcing to end task
+shouldn't kilss PPID
+$ top -p PID -> check the resources used by particular process
+$ htop -> human readble top
+------------------------------------------------------------
+
+Network Management:
+
+$ netstat -lntp -> To check open ports in Linux
+lntp - l for list n for port number t for tcp p for process
+
+$netstat - Network statistics 
+$netstat -lt - only list TCP
+$netstat -ltn - to see only port numbers
+$netstat -ltnp - to see process instancess ID(PID) - We can check respected port is opned or not, what is PID
+-----------------------------------------------------------
+
+$top - to check the CPU and Memory
+$free -m - to check RAM Usage
+$df -hT - Check the Hard disk Memory
+$telnet <IP> <PORT>
+
+$find / -name <"filename"> - To search the file
+
+$tar -x <filename> - for unzip files
+
+$crontab - Linux Crontab is a powerful utility that is used for scheduling and automating Tasksin Unix-Like Operating system. It facilitates the users to run the scripts or Linux cmds at specified times and intervals. It is ideal for repetitive tasks such as system maintenance, backups and updates.
+$ crintab -e Enter
+   * * * * * <cmd>
+   
+$set-hostname <Name>
+-----------------------------------------------------------
+
+3 tier architecture:
+---------------------

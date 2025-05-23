@@ -1,0 +1,27 @@
+1. Forward and reverse proxy
+2. HTTP status codes
+3. Synchronous and Asynchronous - MQ Database
+4. Softlink/symlink hardlink and inode
+5. special variables in shell
+6. API
+7. how can u call other scripts into current script?
+	./script-2
+	source /.script-2
+
+
+
+nginx logs -> /var/log/nginx/access.logs or error.logs
+backend logs -> /var/log/messages
+
+ctrl+] then type quit
+
+KMA10090
+mysql -h 172.31.82.122 -uroot -pExpenseApp@1
+
+19th May
+--------------
+colors in shell
+redirections - create logfile and redirect logs
+Loops
+API
+AWS CLI -authentication and authorization

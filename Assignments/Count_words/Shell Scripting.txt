@@ -1,0 +1,62 @@
+Linux Architecture:
+
+Kernel – The Brain of the System
+
+-> The Kernel is like the brain of a computer.
+-> It controls and manages the hardware (CPU, memory, storage, etc.).
+-> It acts as a middleman between the operating system and the     hardware to ensure everything runs smoothly.
+
+How Do We Talk to the Kernel?
+
+-> We can’t talk to the Kernel directly. Instead, we use the Shell to send instructions.
+-> The Shell is like a translator that helps us communicate with the Kernel.
+
+How Does the User Get the Desired Output?
+
+-> User types a command in the Shell.
+-> Shell translates it into a language the Kernel understands.
+-> Kernel converts it into a language that hardware understands.
+-> Hardware processes the request and gives the result back to the user.
+
+What is Shell?
+
+-> The Shell is simply a place where we type Linux commands.
+-> It reads and processes the commands, then passes them to the Kernel.
+
+In short, User → Shell → Kernel → Hardware → Output is how Linux works!
+
+Shell Working Process:
+-> Whenever we excute a command in terminal(EC2 Instance - Putty or Mobixtem), shell will read read the command and will check the syntax.
+-> If syntax/cmd is correct, then shell will convert that command into Kernal understandable format/Language
+-> Kernal will read the instructions given by shell, and then Kernal will convert the command into hardware components understandable format.
+
+What is Scripting?
+-> Scripting means writing a set of commands in a file to automate tasks.(A text file which executes a sequence of Linux Commands using a logic)
+-> Instead of typing each command manually one by one, you can save them in a file (called a script) and run it whenever needed.
+-> When you execute the script, the computer follows all the commands step by step automatically.
+💡 Example:
+Imagine you need to create a folder, move files, and delete old data every day. Instead of doing it manually, you can write a script that does all these tasks automatically with a single click!
+
+Why Shell Scripting?
+To automate repetitive DevOps Manintenance tasks.
+-> File Backup
+-> Delete Files/Folder/Data
+-> Manage user accounts
+
+First Line: #!/bin/bash
+Syntax: #!/bin/bash - (Bash Shell) - Tell the system to use Bash shell for the execution
+#! - shebang
+Its not mandotary to write, but it is recommended for clarity and consistency.
+
+Different Types Of Shell:
+-> Bash (Bourne Again Shell)
+-> sh(Bourne Shell)
+-> Zsh (Z Shell)
+-> Ksh (Korn Shell)
+-> Csh (C Shell)
+
+For Amazon Linux(Which is based on CentOS/RHEL), Bash(/bin/bash) is the default shell.
+
+
+Ensure the script has execute permission:
+$ .

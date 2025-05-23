@@ -1,0 +1,137 @@
+Linux Commands:
+
+For Creating Public / Private Keys
+$ ssh-keygen -f <FileName>
+Example: ssh-keygen -f devops
+
+For connecting to EC2 / AWS Server from cmd:
+$ ssh -i <Private Key path> servername@publicIP
+Example: ssh -i C:\Users\pavan.d\devops.pem ec2-user@65.0.30.222
+
+$ sudo su - -> for admin access
+$ -> means normal user
+# -> means root user(Admin) 
+$ pwd -> present working directory
+$ uname -> Shows System Info
+$ uname -a -> Detailed system info
+$ uname --help -clear documantation about cmds
+
+d -> directory/folder
+- -> file
+* Absolute path means Complete path
+* Relative path means you already in directory. so start cd, no need to give complete path
+
+Linux Directory Structure: stay tuned. will describe deeply about it
+
+ / -> root directory
+ 
+$ cd / -> Base Location(CD means change Directory)
+$ cd for home directory
+$ cd <Folder-name> -> To move inside the folder
+$ cd.. -> For come back from the folder
+$ ls -> List down files and directories
+$ ls -l -> Long listing format in alphabetical order.(-l for lengthy format)
+$ ls -lr -> Long listing format in reverse alphabetical
+$ ls -lt -> Latest files on top
+$ ls -ltr -> Latest at bottom
+$ ls -la -> All Files including hidden files and folders
+
+$ touch <file_name> -> creates empty file
+$ cat > <file_name> -> type text, then enter and then ctrl+d
+					   Previous content will be replaced
+
+$ cat >> <file_name> -> Appends text to previous content
+
+	 * $ cat >> <Filename> -> It always append to old content : > it will remove old contect and saves new content
+	 > -> usvally called as redirection
+$ cat <file_name> -> To read the text inside file
+$ mkdir <directory_name> - for creating directory/folder
+$ rm <directory_name> for removes file
+$ rmdir <directory_name> for removed directory(It can remove only when dir is empty)
+$ rm -r <directory_name> for remove everything(all files) from directory (-r means recursive i.e inside as well)
+$ rm -rf -> recursively forcefully delete the files and folders inside too
+
+CRUD - Create Read Update Delete
+
+COPY:
+ cp -> copy files and folders
+$ cp <source> <destination>
+ mv -> move files and folders(cut and paste)
+$ mv <source> <destination>
+
+wget means webget -> to get download app link from web
+$ wget <url>
+$ curl <url> - its give text of terminal. it wont download
+
+Pipeing: |
+Pipe is output of first cmd becoming input of second cmd
+
+ grep -> search for a word
+$ grep <word-to-find> <File_Name>
+$ grep -i <word-to-find> <File_Name> - For dnt consider case insenstive
+
+$ cat <Filename> | grep <word-to serach> -> 
+
+ cut -> to cut the string baced on some delimiter(-d)
+$ echo <string> | cut -d <delimiter ex-/ :> -f1
+$ echo <string> | cut -d <delimiter ex-/ :> -f2
+$ echo <string> | cut -d <delimiter ex-/ :> -f1-8
+
+ awk -> 
+$ awk -F ":" '{print $1F}' <File_Name>
+$ awk -F ":" '{print $1F,$3F}' <File_Name>
+$ echo <string> | awk -F "/" '{print $1F}'
+$ echo <string> | awk -F "/" '{print $NF}'
+ -F means Fragment
+ 
+Difference between $cut and $awk?
+both we can use for the delimitation purpose. we can choose any delimiter to cut the text/cmd/string/url. 
+But $awk has another usage. i.e column based.
+
+ head -> to show first 10 lines of content in the the file
+ tail -> to show last 10 lines of content in the file
+$ cat <file-name> | head
+$ cat <file_name> | tail
+$ head -n 2 <filename> -> for first 2 lines
+$ tail -n 2 <filename> -> for last 2 lines
+
+logfile -> $ tail -f <log_file>
+ -f = follow
+ 
+$ find / -name <"file/folder_name"> - To search the file/folder
+ / -> root directory
+$ find . -name "File.folder_name"
+$ find . -name "*<letters related to file/folder_name, if not sure full name>*"
+ . -> current directory
+-------------------------------------------------------------------------------------
+vi editor:
+
+Editors:
+$vim (Visuvally Improved)
+$vim <filename> - If the file doesn't exists, it will create and open. Its file is there, i will open the file.
+Esc Mode
+Insert Mode
+
+when open a file by default its in ESC Mode
+Esc mode options:
+press i to go insert mode
+press u in insert mode is undo
+press yy - yank/copy the line
+press p - it will paste and press 10p for paste 10 times
+press dd - to cut the line
+press gg - want to go top of the file
+shift+g takes us to bottom
+
+shift+: - to go column Mode:
+:/<word-to-find> - It will search for the word from top. search hit bottom, continue at
+:?<word-to-find> - it will search for the word from buttom
+:set nu - Numbers will display/highlight
+:set nonu - numbers dnt dispaly/unhighlight
+:noh - it will unhighlight the previous searched word (no highlight)
+:q - quit the file or come out of the file. not saving
+:q! - quit without saving
+:wq - save the changes and quit
+:s/<word-to-find>/<replace with anotherword> It will only substitute only where the cusrsor placed
+:2ss/<word-to-find>/<replace with anotherword> - it will substite particular line word
+:%s/<word-to-find>/<replace with anotherword>/g - replace entire file
+

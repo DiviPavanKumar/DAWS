@@ -1,0 +1,16 @@
+AMI - Amazon Machine Image
+ - Pre-Configured OS with some packages.
+ AMI -> baser OS -> redhat 9 + nginx + applications + packages -> Take it as an image
+
+
+NAT - Network Address Transalation
+VPC - Virtual Private Cloud
+VPN - Virtual Private Network
+DNS - Domain Name System
+ISP - Internet Service Provider
+ISP Provides Public IP Addresss to Modem. 
+Letancy and Security, - These two are major reasons to use Private IP.
+
+Public IP vs Private IP:
+	- Internal communication should be done by using private IP
+	- Outside of network, we must use public IP
